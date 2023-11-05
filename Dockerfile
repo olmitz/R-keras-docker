@@ -4,11 +4,13 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # install R and python3
 RUN apt-get update -y \
-&& apt-get install r-base r-base-dev python3 python3-pip -y
+&& apt-get install --no-install-recommends r-base r-base-dev python3 python3-pip -y \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
 
 # upgrade pip and install tensorflow and keras deps
-RUN pip install pip --upgrade \
-&& pip install tensorflow tensorflow-hub tensorflow-datasets scipy requests Pillow h5py pandas pydot
+RUN pip install pip --no-cache-dir --upgrade \
+&& pip install --no-cache-dir tensorflow tensorflow-hub tensorflow-datasets scipy requests Pillow h5py pandas pydot
 
 ENV RETICULATE_PYTHON /usr/bin/python3
 
