@@ -19,3 +19,5 @@ ENV RETICULATE_PYTHON /usr/bin/python3
 RUN Rscript -e 'install.packages(c("tensorflow", "keras"), clean = TRUE)'
 
 COPY ./network.R /opt/network.R
+
+CMD ["/usr/bin/env", "R"]
