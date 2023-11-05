@@ -15,6 +15,6 @@ RUN pip install pip --no-cache-dir --upgrade \
 ENV RETICULATE_PYTHON /usr/bin/python3
 
 # install R libs tensorflow and keras
-RUN Rscript -e 'install.packages(c("tensorflow", "keras"))'
+RUN Rscript -e 'install.packages(c("tensorflow", "keras"), clean = TRUE)'
 
 COPY ./network.R /opt/network.R
